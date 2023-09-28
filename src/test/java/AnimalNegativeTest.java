@@ -1,0 +1,21 @@
+import com.example.Animal;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import static org.junit.Assert.assertThrows;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
+public class AnimalNegativeTest {
+    @Mock
+    Animal animal;
+
+    @Test
+    public void setAnimalError() throws Exception {
+        when(animal.getFood("нечто")).thenThrow(new Exception());
+        assertThrows(Exception.class, () -> animal.getFood("нечто"));
+    }
+}
+
