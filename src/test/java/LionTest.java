@@ -6,9 +6,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+
 
 public class LionTest {
 
@@ -28,9 +27,9 @@ public class LionTest {
 
     @Test
     public void testGetFood() throws Exception {
-        List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
-        when(feline.eatMeat()).thenReturn(expectedFood);
         Lion lion = new Lion("Самец", feline);
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
         List<String> actualFood = lion.getFood();
         assertEquals(expectedFood, actualFood);
         System.out.println("Ожидаемый результат: " + expectedFood);
